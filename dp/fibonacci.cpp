@@ -14,12 +14,28 @@ using namespace std;
 #define yn cout<<"Yes\n"
 #define nn cout<<"No\n"
 
+int fib(int n){
+    if(n == 0 || n == 1)return n;
+    return fib(n - 1) + fib(n - 2);
+}
+int fib_dp(int n,vector<int>& dp){
+    if(n == 0 || n == 1)return n;
+    if(dp[n] != -1){
+        return dp[n];
+    }
+    return dp[n] = fib_dp(n - 1,dp) + fib_dp(n - 2,dp);
+}
+
 void solve(){
-    
+    int n;
+    cin>>n;
+    vector<int> dp(n+1,-1);
+    // cout<<fib(n);
+    cout<<fib_dp(n,dp);
 }
 int main() {
     fast_io;
-    testcases {
+    testcases1 {
         solve();
     }
     return 0;
