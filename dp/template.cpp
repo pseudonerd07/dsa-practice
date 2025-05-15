@@ -3,8 +3,8 @@ using namespace std;
 #define ll long long
 #define fast_io ios::sync_with_stdio(false); cin.tie(nullptr);
 #define mod 1000000007
-#define vi vector<int> 
-#define vll vector<ll> 
+#define vi vector<int>
+#define vll vector<ll>
 #define cn int n;cin>>n
 #define printv for(auto x:v)cout<<x<<" ";cout<<endl;
 #define loop for(int i=0;i<n;i++)
@@ -17,6 +17,7 @@ using namespace std;
 void solve(){
     
 }
+
 int main() {
     fast_io;
     testcases {
