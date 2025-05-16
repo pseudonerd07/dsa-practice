@@ -36,7 +36,7 @@ void solve(){
         if(j - i + 1 == k){
             ans ^= q.front();
             // cout<<q.front()<<" ";
-            if(!q.empty() && v[i] == q.front()){`
+            if(!q.empty() && v[i] == q.front()){
                 q.pop_front();
             }
             i++;
