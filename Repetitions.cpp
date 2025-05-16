@@ -14,37 +14,24 @@ using namespace std;
 #define yn cout<<"Yes\n"
 #define nn cout<<"No\n"
 #define pb push_back
-const int N = (int)1e7+1;
-int v[N];
-void solve(){
-    int n,k;
-    cin>>n>>k;
-    int x,a,b,c;
-    cin>>x>>a>>b>>c;
-    v[0] = x;
-    for(int i = 1; i < n; i++){
-        v[i] = ((ll)a*v[i-1] + b)%c;
-    }
-    deque<int> q;
-    ll ans = 0;
-    int i = 0, j = 0;
-    while(j < n){
-        while(!q.empty() && q.back() > v[j]){
-            q.pop_back();
-        }
-        q.push_back(v[j]);
-        if(j - i + 1 == k){
-            ans ^= q.front();
-            // cout<<q.front()<<" ";
-            if(!q.empty() && v[i] == q.front()){
-                q.pop_front();
-            }
-            i++;
-        }
-        j++;
-    }
-    cout<<ans<<endl;
 
+void solve(){
+    string s;
+    cin>>s;
+    int ans = 1;
+    int n = s.size();
+    int count = 1;
+    for(int i = 0; i < n-1; i++){
+        if(s[i] == s[i+1]){
+            count++;
+        }
+        else{
+            ans = max(ans,count);
+            count = 1;
+        }
+    }
+    ans = max(ans,count);
+    cout<<ans<<endl;
 }
 
 int main() {

@@ -14,37 +14,37 @@ using namespace std;
 #define yn cout<<"Yes\n"
 #define nn cout<<"No\n"
 #define pb push_back
-const int N = (int)1e7+1;
-int v[N];
+
 void solve(){
-    int n,k;
-    cin>>n>>k;
-    int x,a,b,c;
-    cin>>x>>a>>b>>c;
-    v[0] = x;
-    for(int i = 1; i < n; i++){
-        v[i] = ((ll)a*v[i-1] + b)%c;
+    int n,k;cin>>n>>k;
+    vector<int> v(n,-1);
+    for(auto &x:v)cin>>x;
+    vector<int> cnt(n+1,0);
+    set<int> st;
+    for(int i = 0; i <= n; i++){
+        st.insert(i);
     }
-    deque<int> q;
-    ll ans = 0;
     int i = 0, j = 0;
     while(j < n){
-        while(!q.empty() && q.back() > v[j]){
-            q.pop_back();
+        if(v[j] <= n){
+            if(st.find(v[j]) != st.end()){
+                st.erase(v[j]);
+            }
+            cnt[v[j]]++;
         }
-        q.push_back(v[j]);
+
         if(j - i + 1 == k){
-            ans ^= q.front();
-            // cout<<q.front()<<" ";
-            if(!q.empty() && v[i] == q.front()){
-                q.pop_front();
+            cout<<*st.begin()<<" ";
+            if(v[i] <= n){
+                cnt[v[i]]--;
+                if(cnt[v[i]] == 0){
+                    st.insert(v[i]);
+                }
             }
             i++;
         }
         j++;
     }
-    cout<<ans<<endl;
-
 }
 
 int main() {
