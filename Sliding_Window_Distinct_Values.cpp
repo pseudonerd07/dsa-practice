@@ -13,16 +13,36 @@ using namespace std;
 #define maploop for(auto it=mp.begin();it!=mp.end();it++)
 #define yn cout<<"Yes\n"
 #define nn cout<<"No\n"
-
+#define pb push_back
+// const int N = 2*(int)(1e5) + 1;
+int v[200010];
 void solve(){
-    
+    int n,k;
+    cin>>n>>k;
+    for(int i = 0; i < n; i++){
+        cin>>v[i];
+    }  
+    unordered_map<int,int> mp;
+    int i = 0, j = 0;
+    while(j < n){
+        mp[v[j]]++;
+        if(j - i + 1 == k){
+
+            cout<<mp.size()<<" ";
+            mp[v[i]]--;
+            if(mp[v[i]] == 0){
+                mp.erase(v[i]);
+            }   
+            i++;
+        }
+        j++;
+    }
 }
 
 int main() {
     fast_io;
-    testcases {
+    testcases1 {
         solve();
     }
     return 0;
 }
-
